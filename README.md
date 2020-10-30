@@ -7,8 +7,14 @@ During the COVID-19 pandemic, most of the school switches to online lectures. Un
 ## 2.Abstract
 The central idea of the project is to enable sneeze detection using the microphone on Arduino Nano 33 BLE Sense. Machine learning using TinyML will be used to detect sneezes. Pre-recorded sneezing samples will be used to train and test the machine learning model. The sneezing samples will be pre-processed by filters to reduce background noises. The goal of the project is to detect different kinds of sneezes and deal with confusing cases, such as talking loudly or coughing. After the sneeze is detected, a signal will be sent from the board to the computer using Bluetooth and the text “Bless You!” will be shown in Zoom chatbox.
 
+## 3.Techniques Needed
+- Voice signal processing
+- Data filtering and noise reduction
+- Machine learning
+- Power optimization
+
 ---
-## 3.Timeline
+## 4.Timeline
 - Week 4: Research on the topic and basic test
 - Week 5: Data collection and build filters
 - Week 6: Build the machine learning model and train data
@@ -17,4 +23,7 @@ The central idea of the project is to enable sneeze detection using the micropho
 - Week 9: Debug and test
 - Week 10: Demo and build github website
 
+## 5.Goals
+- Detect sneezes from different sound sources
+- Deal with confusing cases such as talking loudly or coughing
 
