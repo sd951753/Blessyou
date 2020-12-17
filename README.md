@@ -107,9 +107,9 @@ However, this is not the end point of the project. First, the classifier can be 
 
 - [2] Nguyen, Khuong An, and Zhiyuan Luo. “Cover Your Cough: Detection of Respiratory Events with Confidence Using a Smartwatch.” PMLR, PMLR, 7 June 2018, proceedings.mlr.press/v91/nguyen18a.html.
 
-- [3] "FIR Filters - An Overview | Sciencedirect Topics". Sciencedirect.Com, 2020, https://www.sciencedirect.com/topics/engineering/fir-filters. 
+- [3] "FIR Filters - An Overview Sciencedirect Topics". Sciencedirect.Com, 2020, https://www.sciencedirect.com/topics/engineering/fir-filters. 
 
-- [4] "Fast Fourier Transform - An Overview | Sciencedirect Topics". Sciencedirect.Com, 2020, https://www.sciencedirect.com/topics/engineering/fast-fourier-transform.
+- [4] "Fast Fourier Transform - An Overview Sciencedirect Topics". Sciencedirect.Com, 2020, https://www.sciencedirect.com/topics/engineering/fast-fourier-transform.
 
 - [5] "Freesound Annotator: A Platform For The Collaborative Creation Of Open Audio Collections Labeled By Humans And Based On Freesound Content". Annotator.Freesound.Org, 2020, https://annotator.freesound.org/fsd/explore/%252Fm%252F01hsr_/.
 
