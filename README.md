@@ -97,6 +97,16 @@ In this project,  a robust and reliable sneeze detecting system is implemented w
 However, this is not the end point of the project. First, the classifier can be further optimized by incorporating sensors such as motion sensors to detect the position of the device and add weight variables. Second, better filtering methods are considered when capturing audio signals to deal with unwanted spikes. Lastly, since the project only uses the microphone and MCU on the Arduino 33 BLE Sense board, the size of the device can be further decreased by designing a customized PCB board that contains only essential parts of the project.
 
 ## 7.Bibliography
-
-
-
+- [1] Al Hossain, Forsad and Lover, Andrew A. and Corey, George A. and Reich, Nicholas G. and Rahman, Tauhidur. “FluSense: A Contactless Syndromic Surveillance Platform for Influenza-Like Illness in Hospital Waiting Areas” Association for Computing Machinery, March 2020, https://doi.org/10.1145/3381014
+- [2] Nguyen, Khuong An, and Zhiyuan Luo. “Cover Your Cough: Detection of Respiratory Events with Confidence Using a Smartwatch.” PMLR, PMLR, 7 June 2018, proceedings.mlr.press/v91/nguyen18a.html.
+- [3] "FIR Filters - An Overview | Sciencedirect Topics". Sciencedirect.Com, 2020, https://www.sciencedirect.com/topics/engineering/fir-filters. 
+- [4] "Fast Fourier Transform - An Overview | Sciencedirect Topics". Sciencedirect.Com, 2020, https://www.sciencedirect.com/topics/engineering/fast-fourier-transform. 
+- [5] "Freesound Annotator: A Platform For The Collaborative Creation Of Open Audio Collections Labeled By Humans And Based On Freesound Content". Annotator.Freesound.Org, 2020, https://annotator.freesound.org/fsd/explore/%252Fm%252F01hsr_/.
+- [6] "Better Word Classification With Arduino Nano 33 BLE Sense And Machine Learning". Eloquent Arduino Blog, 2020, https://eloquentarduino.github.io/2020/08/better-word-classification-with-arduino-33-ble-sense-and-machine-learning/.
+- [7] Wang, Alan. “EloquentTinyML: Easier Voice Classifier on Nano 33 BLE Sense.” Arduino Project Hub, 1 Nov. 2020, create.arduino.cc/projecthub/alankrantas/eloquenttinyml-easier-voice-classifier-on-nano-33-ble-sense-ebb81e?ref=part.
+- [8] "Scikit-Learn: Machine Learning In Python — Scikit-Learn 0.23.2 Documentation". Scikit-Learn.Org, 2020, https://scikit-learn.org/stable/.
+- [9] Brittain, Thomas. “Getting Started with Bluetooth LE on the Arduino Nano 33 Sense.” Ladvien's Lab, 14 June 2020, ladvien.com/arduino-nano-33-bluetooth-low-energy-setup/. 
+- [10] Ünal, Mehmet Ozan. “Mozanunal/SimpleDSP.” GitHub, 29 Apr. 2020, github.com/mozanunal/SimpleDSP. 
+- [11] Salviati, Juna. “The Late Night Tinkering Projects #10: Fun with Fourier!” Medium, Medium, 27 May 2020, 1littleendian.medium.com/the-late-night-tinkering-projects-10-fun-with-fourier-a72b358229b3. 
+- [12] GIANCONO, DALE. “DaleGia/Nano-33-Sense-Serial-Example.” GitHub, 10 June 2020, github.com/DaleGia/nano-33-sense-serial-example. 
+- [13] Al Hossain, Forsad and Lover, Andrew A. and Corey, George A. and Reich, Nicholas G. and Rahman, Tauhidur. “FluSense: A Contactless Syndromic Surveillance Platform for Influenza-Like Illness in Hospital Waiting Areas” Association for Computing Machinery, March 2020, https://doi.org/10.1145/3381014
