@@ -53,12 +53,12 @@ The filter input is applied to a sequence of delays, and the output from each de
 The classifier was implemented using two types of Python libraries: sklearn and TensorFlow.
 In sklearn, several different classifiers were used and compared: SVM, RandomForest,  DecisionTree and LogisticRegression. Below are the specific parameters that were used for each of the classifier:
 | Classifier  | SVM | RandomForest  | DecisionTree | LogisticRegression  |
-| --- | ---  | --- | --- | --- |
+| :---: | :---:  | :---: | :---: | :---: |
 | Parameters |kernel='rbf', gamma = 0.2, C=100 | max_depth=3, random_state=0 | default | random_state=0 |
 
 In TensorFlow, the neural network based on TinyML was implemented and below are the  related parameters:
 | Model Type  | Sequential |
-| ------------- | ------------- |
+| :---: | :---: |
 | Number of layers | 3 |
 | Activation functions | ‘relu’, ‘relu’, ‘softmax’  |
 | Optimizer | ‘adam’ |
@@ -76,7 +76,7 @@ The ArduinoBLE and the bleak library are used to establish BLE communication bet
 ## 5.Experimental Results
 Below are the model training accuracy results for each of the classifier:
 | Classifier  | SVM | RandomForest  | DecisionTree | LogisticRegression  | Convoluted Neural Network |
-| ---  | --- | ---  | --- | ---  | --- |
+| :---:  | :---: | :---:  | :---: | :---:  | :---: |
 | Training Accuracy  | 64.1% | 97.4%  | 89.0% | 82.1%  | 89.7% |
 
 RandomForest and Neural Network classifiers come with the highest training accuracy, with respect to 97.4% and 89.7%. Below are the confusion matrices for Random Forest Classifier and Neural Network Classifier:
