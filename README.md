@@ -17,8 +17,6 @@ In this paper, detection of cough and sneezes was achieved through a hybrid meth
 ### FluSense: A Contactless Syndromic Surveillance Platform for Influenza-Like Illness in HospitalWaiting Areas
 In this paper, the researchers developed a system (FluSense) to detect patients with flu like symptoms in a hospital waiting room. The system utilizes a thermal camera to capture thermal images for temperature measurement and a microphone array to capture audio data for symptoms detection. Then the data collected is fed to a neural computing engine to analyze at real-time. FluSence is deployed to the hospital of a large university for seven months. The result is compared to the gold standard laboratory-confirmed influenza case data collected from the same facility and shows strong correlation with the laboratory-confirmed influenza trend.
 
-
-
 ## 4.Technical approach
 #### 4.1 System Overview
   The sneeze detection system can be seperated in to four parts: hardware data capturing, data pre-processing, classifying, wireless communication. An overview for the entire system in shown in Fig 1 below.
@@ -37,7 +35,8 @@ During the data collection process, the sneeze samples were played with regard t
 
 ##### 4.4.1 Feature Extraction
 At the start of each sneeze detection session, the Arduino microphone was calibrated for the first 3 seconds to get rid of background noises and offsets. After each sneeze was captured, FFT was performed to convert the data from the time domain to frequency domain for feature extraction: 
-# FFT image
+<img width="412" alt="fft" src="https://user-images.githubusercontent.com/72180511/102531227-d3d13380-4056-11eb-82e1-50759d13da08.png">
+
 The reason was that the feature that was intended to be used for sneeze detection is the frequency instead of amplitude, since the frequency of the sneeze is significantly higher than other activities such as coughing, finger snapping and talking. The waveforms of the sneeze as well as other activities are plotted in frequency domain as below. The waveform of the sneezing shows significant peaks with the frequency of around 5000-6000Hz. The most resembled waveform is from the finger snapping, but with the peak frequency of around 2200-2400Hz.
 - Sneezing:
 ![sneeze](https://user-images.githubusercontent.com/72180511/102526103-0cb9da00-4050-11eb-8f42-ae07646af700.JPG)
@@ -50,7 +49,8 @@ The reason was that the feature that was intended to be used for sneeze detectio
 
 ##### 4.4.2 Filtering
 The data was then filtered by the Finite Impulse Response(FIR) filter. The FIR filter was chosen because it is stable and easy to implement. The FIR filter structure is shown below:
-# FIR image
+<img width="512" alt="fir_filter" src="https://user-images.githubusercontent.com/72180511/102531300-e9465d80-4056-11eb-951d-248713f3dc1a.png">
+
 The filter input is applied to a sequence of delays, and the output from each delay is then applied to the input of multipliers, which has a set of coefficients. The number of coefficients that were used in this project is 46. The output of each multiplier is then added together using an adder, and the output of the adder is the filtered output.
 
 #### 4.5 Classification
