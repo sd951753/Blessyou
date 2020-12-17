@@ -80,10 +80,10 @@ Below are the model training accuracy results for each of the classifier:
 | Training Accuracy  | 64.1% | 97.4%  | 89.0% | 82.1%  | 89.7% |
 
 Random Forest and Neural Network classifiers come with the highest training accuracy, with respect to 97.4% and 89.7%. Below are the confusion matrices for Random Forest Classifier and Neural Network Classifier:
-Random Forest Classifier:
+- Random Forest Classifier:
 ![CM_RFC](https://user-images.githubusercontent.com/72180511/102528284-345e7180-4053-11eb-8717-1abdaaaf2ba9.png)
 
-Neural Network Classifier:
+- Neural Network Classifier:
 ![CM_NN_2](https://user-images.githubusercontent.com/72180511/102530215-d97a4980-4055-11eb-97f7-86778d8e08c4.png)
 
 According to the matrices, Random Forest Classifier generates better results when detecting sneezes compared with Neural Network Classifier in theory. However, when testing with real-time sneeze data on Arduino, the testing accuracy of the Neural Network Classifier is around 95%, while the testing accuracy of the Random Forest Classifier is only 80%. 
