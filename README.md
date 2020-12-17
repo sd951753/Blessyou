@@ -35,9 +35,11 @@ During the data collection process, the sneeze samples were played with regard t
 
 ##### 4.4.1 Feature Extraction
 At the start of each sneeze detection session, the Arduino microphone was calibrated for the first 3 seconds to get rid of background noises and offsets. After each sneeze was captured, FFT was performed to convert the data from the time domain to frequency domain for feature extraction: 
+
 <img width="412" alt="fft" src="https://user-images.githubusercontent.com/72180511/102531227-d3d13380-4056-11eb-82e1-50759d13da08.png">
 
 The reason was that the feature that was intended to be used for sneeze detection is the frequency instead of amplitude, since the frequency of the sneeze is significantly higher than other activities such as coughing, finger snapping and talking. The waveforms of the sneeze as well as other activities are plotted in frequency domain as below. The waveform of the sneezing shows significant peaks with the frequency of around 5000-6000Hz. The most resembled waveform is from the finger snapping, but with the peak frequency of around 2200-2400Hz.
+
 - Sneezing:
 ![sneeze](https://user-images.githubusercontent.com/72180511/102526103-0cb9da00-4050-11eb-8f42-ae07646af700.JPG)
 - Coughing:
@@ -49,6 +51,7 @@ The reason was that the feature that was intended to be used for sneeze detectio
 
 ##### 4.4.2 Filtering
 The data was then filtered by the Finite Impulse Response(FIR) filter. The FIR filter was chosen because it is stable and easy to implement. The FIR filter structure is shown below:
+
 <img width="512" alt="fir_filter" src="https://user-images.githubusercontent.com/72180511/102531300-e9465d80-4056-11eb-951d-248713f3dc1a.png">
 
 The filter input is applied to a sequence of delays, and the output from each delay is then applied to the input of multipliers, which has a set of coefficients. The number of coefficients that were used in this project is 46. The output of each multiplier is then added together using an adder, and the output of the adder is the filtered output.
@@ -56,11 +59,13 @@ The filter input is applied to a sequence of delays, and the output from each de
 #### 4.5 Classification
 The classifier was implemented using two types of Python libraries: sklearn and TensorFlow.
 In sklearn, several different classifiers were used and compared: SVM, RandomForest,  DecisionTree and LogisticRegression. Below are the specific parameters that were used for each of the classifier:
+
 | Classifier  | SVM | RandomForest  | DecisionTree | LogisticRegression  |
 | :---: | :---:  | :---: | :---: | :---: |
 | Parameters |kernel='rbf', gamma = 0.2, C=100 | max_depth=3, random_state=0 | default | random_state=0 |
 
 In TensorFlow, the neural network based on TinyML was implemented and below are the  related parameters:
+
 | Model Type  | Sequential |
 | :---: | :---: |
 | Number of layers | 3 |
@@ -78,6 +83,7 @@ The ArduinoBLE and the bleak library are used to establish the BLE communication
 
 ## 5.Experimental Results
 Below are the model training accuracy results for each of the classifier:
+
 | Classifier  | SVM | RandomForest  | DecisionTree | LogisticRegression  | Convoluted Neural Network |
 | :---:  | :---: | :---:  | :---: | :---:  | :---: |
 | Training Accuracy  | 64.1% | 97.4%  | 89.0% | 82.1%  | 89.7% |
@@ -98,15 +104,27 @@ However, this is not the end point of the project. First, the classifier can be 
 
 ## 7.Bibliography
 - [1] Al Hossain, Forsad and Lover, Andrew A. and Corey, George A. and Reich, Nicholas G. and Rahman, Tauhidur. “FluSense: A Contactless Syndromic Surveillance Platform for Influenza-Like Illness in Hospital Waiting Areas” Association for Computing Machinery, March 2020, https://doi.org/10.1145/3381014
+
 - [2] Nguyen, Khuong An, and Zhiyuan Luo. “Cover Your Cough: Detection of Respiratory Events with Confidence Using a Smartwatch.” PMLR, PMLR, 7 June 2018, proceedings.mlr.press/v91/nguyen18a.html.
+
 - [3] "FIR Filters - An Overview | Sciencedirect Topics". Sciencedirect.Com, 2020, https://www.sciencedirect.com/topics/engineering/fir-filters. 
-- [4] "Fast Fourier Transform - An Overview | Sciencedirect Topics". Sciencedirect.Com, 2020, https://www.sciencedirect.com/topics/engineering/fast-fourier-transform. 
+
+- [4] "Fast Fourier Transform - An Overview | Sciencedirect Topics". Sciencedirect.Com, 2020, https://www.sciencedirect.com/topics/engineering/fast-fourier-transform.
+
 - [5] "Freesound Annotator: A Platform For The Collaborative Creation Of Open Audio Collections Labeled By Humans And Based On Freesound Content". Annotator.Freesound.Org, 2020, https://annotator.freesound.org/fsd/explore/%252Fm%252F01hsr_/.
+
 - [6] "Better Word Classification With Arduino Nano 33 BLE Sense And Machine Learning". Eloquent Arduino Blog, 2020, https://eloquentarduino.github.io/2020/08/better-word-classification-with-arduino-33-ble-sense-and-machine-learning/.
+
 - [7] Wang, Alan. “EloquentTinyML: Easier Voice Classifier on Nano 33 BLE Sense.” Arduino Project Hub, 1 Nov. 2020, create.arduino.cc/projecthub/alankrantas/eloquenttinyml-easier-voice-classifier-on-nano-33-ble-sense-ebb81e?ref=part. 
+
 - [8] "Scikit-Learn: Machine Learning In Python — Scikit-Learn 0.23.2 Documentation". Scikit-Learn.Org, 2020, https://scikit-learn.org/stable/.
+
 - [9] Brittain, Thomas. “Getting Started with Bluetooth LE on the Arduino Nano 33 Sense.” Ladvien's Lab, 14 June 2020, ladvien.com/arduino-nano-33-bluetooth-low-energy-setup/. 
+
 - [10] Ünal, Mehmet Ozan. “Mozanunal/SimpleDSP.” GitHub, 29 Apr. 2020, github.com/mozanunal/SimpleDSP. 
+
 - [11] Salviati, Juna. “The Late Night Tinkering Projects #10: Fun with Fourier!” Medium, Medium, 27 May 2020, 1littleendian.medium.com/the-late-night-tinkering-projects-10-fun-with-fourier-a72b358229b3. 
+
 - [12] GIANCONO, DALE. “DaleGia/Nano-33-Sense-Serial-Example.” GitHub, 10 June 2020, github.com/DaleGia/nano-33-sense-serial-example. 
+
 - [13] Al Hossain, Forsad and Lover, Andrew A. and Corey, George A. and Reich, Nicholas G. and Rahman, Tauhidur. “FluSense: A Contactless Syndromic Surveillance Platform for Influenza-Like Illness in Hospital Waiting Areas” Association for Computing Machinery, March 2020, https://doi.org/10.1145/3381014
