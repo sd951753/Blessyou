@@ -1,7 +1,7 @@
 # Blessyou Sneeze Detection
 
 ## Susie Tan & Holam Dong
-## [Demo Link](https://youtu.be/bn-PLK89wTE)
+## [Demo](https://youtu.be/bn-PLK89wTE)
 
 
 ## 1.Abstract
