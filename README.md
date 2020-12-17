@@ -3,9 +3,10 @@
 ## 1.Introduction
   During the COVID-19 pandemic, most of the school switches to online lectures. Unlike in-person lectures, online lectures lack normal interaction between students, such as the “bless you” from your classmates. To increase the engagement of the students during class, we come up with the idea to create an interactive sneeze detector that will say “bless you” after you sneeze. And it has the potential to be developed as a respiratory sickness prevention device.
 
----
+
 ## 2.Abstract
   The objective of the project is to enable real-time sneeze detection using the microphone on Arduino Nano 33 BLE Sense. Fast Fourier Transform(FFT) was performed on pre-recorded sneeze samples to convert the data from the time domain to frequency domain. The samples were then filtered by the Finite Impulse Response(FIR) filter and ready for training classifiers. Two different machine learning classifier training approaches were implemented. The first one was using sklearn, and the highest training accuracy achieved was through RandomForest classifier with 97.4% and testing accuracy around 90%. The other one was using TensorFlow to implement a 3-layer neural network, and the training accuracy was around 89.7% with testing accuracy around 95%. After the sneeze is detected, a signal is sent from the Arduino board to the computer using Bluetooth and a message “Bless You!” will appear with a background voiceover.The project successfully detects different kinds of sneezes with no confusion on similar sound sources such as coughing and snapping fingers.
+
 
 ## 3.Related work
 ### Cover Your Cough: Detection of Respiratory Events with Confidence Using a Smartwatch
@@ -14,7 +15,7 @@
 ### FluSense: A Contactless Syndromic Surveillance Platform for Influenza-Like Illness in HospitalWaiting Areas
   In this paper, the researchers developed a system (FluSense) to detect patients with flu like symptoms in a hospital waiting room. The system utilizes a thermal camera to capture thermal images for temperature measurement and a microphone array to capture audio data for symptoms detection. Then the data collected is fed to a neural computing engine to analyze at real-time. FluSence is deployed to the hospital of a large university for seven months. The result is compared to the gold standard laboratory-confirmed influenza case data collected from the same facility and shows strong correlation with the laboratory-confirmed influenza trend.
 
----
+
 ## 4.Technical approach
 #### 4.1 System Overview
   The sneeze detection system can be seperated in to four parts: hardware data capturing, data pre-processing, classifying, wireless communication. An overview for the entire system in shown in Fig 1 below.
@@ -72,7 +73,7 @@ After each of the models had been trained, it was deployed to plain C code using
 #### 4.6 Wireless Communication
 The ArduinoBLE and the bleak library are used to establish BLE communication between the board and the computer. Every time a sneeze is being detected, a byte array containing ‘0x01’ will be sent from the Arduino board to the computer. The computer is always ready and awaits receiving the signal from the board. Upon receiving ‘0x01’, the computer will print out a message “Bless you!” on the screen, at the same time a sound snippet of “bless you” will be played.
 
----
+
 ## 5.Experimental Results
 Below are the model training accuracy results for each of the classifier:
 | Classifier  | SVM | RandomForest  | DecisionTree | LogisticRegression  | Convoluted Neural Network |
@@ -87,7 +88,7 @@ RandomForest and Neural Network classifiers come with the highest training accur
 
 According to the matrices, Random Forest Classifier generates better results when detecting sneezes compared with Neural Network Classifier in theory. However, when testing with real-time sneeze data on Arduino, the testing accuracy of the Neural Network Classifier is around 95%, while the testing accuracy of the Random Forest Classifier is only 80%. 
 
----
+
 ## 6.Conclusion & Future work
 In this project,  a robust and reliable sneeze detecting system is implemented with an embedded machine learning model. The convoluted neural network ML model is chosen as the primary classifier with around 95% testing accuracy. The classification algorithms are optimized using FFT and FIR filters to deal with confusing cases such as snapping fingers and coughing. The BLE communication between the Arduino board and the computer is also established. 
 
