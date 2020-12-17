@@ -103,7 +103,7 @@ However, this is not the end point of the project. First, the classifier can be 
 - [4] "Fast Fourier Transform - An Overview | Sciencedirect Topics". Sciencedirect.Com, 2020, https://www.sciencedirect.com/topics/engineering/fast-fourier-transform. 
 - [5] "Freesound Annotator: A Platform For The Collaborative Creation Of Open Audio Collections Labeled By Humans And Based On Freesound Content". Annotator.Freesound.Org, 2020, https://annotator.freesound.org/fsd/explore/%252Fm%252F01hsr_/.
 - [6] "Better Word Classification With Arduino Nano 33 BLE Sense And Machine Learning". Eloquent Arduino Blog, 2020, https://eloquentarduino.github.io/2020/08/better-word-classification-with-arduino-33-ble-sense-and-machine-learning/.
-- [7] Wang, Alan. “EloquentTinyML: Easier Voice Classifier on Nano 33 BLE Sense.” Arduino Project Hub, 1 Nov. 2020, create.arduino.cc/projecthub/alankrantas/eloquenttinyml-easier-voice-classifier-on-nano-33-ble-sense-ebb81e?ref=part.
+- [7] Wang, Alan. “EloquentTinyML: Easier Voice Classifier on Nano 33 BLE Sense.” Arduino Project Hub, 1 Nov. 2020, (create.arduino.cc/projecthub/alankrantas/eloquenttinyml-easier-voice-classifier-on-nano-33-ble-sense-ebb81e?ref=part.)
 - [8] "Scikit-Learn: Machine Learning In Python — Scikit-Learn 0.23.2 Documentation". Scikit-Learn.Org, 2020, https://scikit-learn.org/stable/.
 - [9] Brittain, Thomas. “Getting Started with Bluetooth LE on the Arduino Nano 33 Sense.” Ladvien's Lab, 14 June 2020, ladvien.com/arduino-nano-33-bluetooth-low-energy-setup/. 
 - [10] Ünal, Mehmet Ozan. “Mozanunal/SimpleDSP.” GitHub, 29 Apr. 2020, github.com/mozanunal/SimpleDSP. 
