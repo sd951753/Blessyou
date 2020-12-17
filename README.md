@@ -17,7 +17,7 @@
 ---
 ## 4.Technical approach
 #### 4.1 System Overview
-  The sneeze detection system can be seperated in to three parts: hardware data capturing, data pre-processing, classifying. An overview for the entire system in shown in Fig 1 below.
+  The sneeze detection system can be seperated in to four parts: hardware data capturing, data pre-processing, classifying, wireless communication. An overview for the entire system in shown in Fig 1 below.
 ![FlowChart (1)](https://user-images.githubusercontent.com/72180511/102518683-703f0a00-4046-11eb-9254-7e0cfab224de.jpg)
 
 #### 4.2 Hardware
@@ -29,9 +29,9 @@
 
   During the data collection process, the sneeze samples were played with regard to slightly different distances from the board and slightly different volumes to add more variance to the dataset, taking care of the corner cases. The output signal of the microphone from a sneeze was decoded to an integer array of size 128 from PDM and was stored into a csv file. 
 
-#### 4.3 Data Preprocessing
+#### 4.4 Data Preprocessing
 
-##### 4.3.1 Feature Extraction
+##### 4.4.1 Feature Extraction
   At the start of each sneeze recording session, the Arduino microphone was calibrated for the first 3 seconds to get rid of background noises and offsets. After each sneeze was captured, FFT was performed to convert the data from the time domain to frequency domain for feature extraction: 
 # FFT image
   The reason was that the feature that was intended to be used for sneeze detection is the frequency instead of amplitude, since the frequency of the sneeze is significantly higher than other activities such as coughing, finger snapping and talking. The waveforms of sneeze as well as other activities are plotted in frequency domain as below. The peak frequency of the sneeze is around 5000-6000Hz.
@@ -44,12 +44,12 @@
 - Talking:
 ![talk](https://user-images.githubusercontent.com/72180511/102526295-4f7bb200-4050-11eb-9a8d-3859ee472d54.JPG)
 
-##### 4.3.2 Filtering
+##### 4.4.2 Filtering
 The data was then filtered by the Finite Impulse Response(FIR) filter. The FIR filter was chosen because it is stable and easy to implement. The FIR filter structure is shown below:
 # FIR image
 The filter input is applied to a sequence of delays, and the output from each delay is then applied to the input of multipliers, which has a set of coefficients. The number of coefficients that were used in this project is 46. The output of each multiplier is then added together using an adder, and the output of the adder is the filtered output.
 
-#### 4.4 Classification
+#### 4.5 Classification
 The classifier was implemented using two types of Python libraries: sklearn and TensorFlow.
 In sklearn, several different classifiers were used and compared: SVM, RandomForest,  DecisionTree and LogisticRegression. Below are the specific parameters that were used for each of the classifier:
 | Classifier  | SVM | RandomForest  | DecisionTree | LogisticRegression  |
@@ -67,8 +67,31 @@ In TensorFlow, the neural network based on TinyML was implemented and below are 
 | Iteration  | 2000 |
 | Batch size | 16 |
 
+After each of the models had been trained, it was deployed to plain C code using micromlgen Python library so that the model could be interpreted by the Arduino board and perform sneeze detection in real-time using the microphone input.
+
+#### 4.6 Wireless Communication
+The ArduinoBLE and the bleak library are used to establish BLE communication between the board and the computer. Every time a sneeze is being detected, a byte array containing ‘0x01’ will be sent from the Arduino board to the computer. The computer is always ready and awaits receiving the signal from the board. Upon receiving ‘0x01’, the computer will print out a message “Bless you!” on the screen, at the same time a sound snippet of “bless you” will be played.
+
 ---
-## 5.Goals
-- Detect sneezes from different sound sources
-- Deal with confusing cases such as talking loudly or coughing
+## 5.Experimental Results
+Below are the model training accuracy results for each of the classifier:
+| Classifier  | SVM | RandomForest  | DecisionTree | LogisticRegression  | Convoluted Neural Network |
+| ---  | --- | ---  | --- | ---  | --- |
+| Training Accuracy  | 64.1% | 97.4%  | 89.0% | 82.1%  | 89.7% |
+
+RandomForest and Neural Network classifiers come with the highest training accuracy, with respect to 97.4% and 89.7%. Below are the confusion matrices for Random Forest Classifier and Neural Network Classifier:
+- Random Forest Classifier
+![CM_RFC](https://user-images.githubusercontent.com/72180511/102528284-345e7180-4053-11eb-8717-1abdaaaf2ba9.png)
+- Neural Network Classifier
+![CM_NN](https://user-images.githubusercontent.com/72180511/102528293-36283500-4053-11eb-8c69-1019b02a57b9.png)
+
+According to the matrices, Random Forest Classifier generates better results when detecting sneezes compared with Neural Network Classifier in theory. However, when testing with real-time sneeze data on Arduino, the testing accuracy of the Neural Network Classifier is around 95%, while the testing accuracy of the Random Forest Classifier is only 80%. 
+
+---
+## 6.Conclusion & Future work
+In this project,  a robust and reliable sneeze detecting system is implemented with an embedded machine learning model. The convoluted neural network ML model is chosen as the primary classifier with around 95% testing accuracy. The classification algorithms are optimized using FFT and FIR filters to deal with confusing cases such as snapping fingers and coughing. The BLE communication between the Arduino board and the computer is also established. 
+
+However, this is not the end point of the project. First, the classifier can be further optimized by incorporating sensors such as motion sensors to detect the position of the device and add weight variables. Second, better filtering methods are considered when capturing audio signals to deal with unwanted spikes. Lastly, since the project only uses the microphone and MCU on the Arduino 33 BLE Sense board, the size of the device can be further decreased by designing a customized PCB board that contains only essential parts of the project.
+
+
 
