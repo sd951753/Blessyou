@@ -56,6 +56,17 @@ In sklearn, several different classifiers were used and compared: SVM, RandomFor
 | --- | ---  | --- | --- | --- |
 | Parameters |kernel='rbf', gamma = 0.2, C=100 | max_depth=3, random_state=0 | default | random_state=0 |
 
+In TensorFlow, the neural network based on TinyML was implemented and below are the  related parameters:
+| Model Type  | Sequential |
+| ------------- | ------------- |
+| Number of layers | 3 |
+| Activation functions | ‘relu’, ‘relu’, ‘softmax’  |
+| Optimizer | ‘adam’ |
+| Loss | ‘sparse_categorical_crossentropy’ |
+| Metrics | ‘accuracy’ |
+| Iteration  | 2000 |
+| Batch size | 16 |
+
 ---
 ## 5.Goals
 - Detect sneezes from different sound sources
