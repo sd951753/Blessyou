@@ -30,9 +30,10 @@
   During the data collection process, the sneeze samples were played with regard to slightly different distances from the board and slightly different volumes to add more variance to the dataset, taking care of the corner cases. The output signal of the microphone from a sneeze was decoded to an integer array of size 128 from PDM and was stored into a csv file. 
 
 #### 4.3 Data Preprocessing
+
+##### 4.3.1 Feature Extraction
   At the start of each sneeze recording session, the Arduino microphone was calibrated for the first 3 seconds to get rid of background noises and offsets. After each sneeze was captured, FFT was performed to convert the data from the time domain to frequency domain for feature extraction: 
-
-
+# FFT image
   The reason was that the feature that was intended to be used for sneeze detection is the frequency instead of amplitude, since the frequency of the sneeze is significantly higher than other activities such as coughing, finger snapping and talking. The waveforms of sneeze as well as other activities are plotted in frequency domain as below. The peak frequency of the sneeze is around 5000-6000Hz.
 - Sneezing:
 ![sneeze](https://user-images.githubusercontent.com/72180511/102526103-0cb9da00-4050-11eb-8f42-ae07646af700.JPG)
@@ -43,6 +44,17 @@
 - Talking:
 ![talk](https://user-images.githubusercontent.com/72180511/102526295-4f7bb200-4050-11eb-9a8d-3859ee472d54.JPG)
 
+##### 4.3.2 Filtering
+The data was then filtered by the Finite Impulse Response(FIR) filter. The FIR filter was chosen because it is stable and easy to implement. The FIR filter structure is shown below:
+# FIR image
+The filter input is applied to a sequence of delays, and the output from each delay is then applied to the input of multipliers, which has a set of coefficients. The number of coefficients that were used in this project is 46. The output of each multiplier is then added together using an adder, and the output of the adder is the filtered output.
+
+#### 4.4 Classification
+The classifier was implemented using two types of Python libraries: sklearn and TensorFlow.
+In sklearn, several different classifiers were used and compared: SVM, RandomForest,  DecisionTree and LogisticRegression. Below are the specific parameters that were used for each of the classifier:
+| Classifier  | SVM | RandomForest  | DecisionTree | LogisticRegression  |
+| --- | ---  | --- | --- | --- |
+| Parameters |kernel='rbf', gamma = 0.2, C=100 | max_depth=3, random_state=0 | default | random_state=0 |
 
 ---
 ## 5.Goals
